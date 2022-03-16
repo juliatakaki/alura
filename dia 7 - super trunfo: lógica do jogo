@@ -140,8 +140,8 @@ var carta4 = {
 };
 
 var cartas = [carta1, carta2, carta3, carta4];
-var cartaMaquina
-var cartaJogador
+var cartaMaquina;
+var cartaJogador;
 
 function sortearCarta() {
   var numeroCartaMaquina = parseInt(Math.random() * 4);
@@ -163,21 +163,26 @@ function sortearCarta() {
 
 function exibirOpcoes () {
   var opcoes = document.getElementById("opcoes");
-  var opcoesTexto = ""
+  var opcoesTexto = "";
   
   for (var atributo in cartaJogador.atributos) {
-    opcoesTexto += "<input type='radio' name='atributo' value=" + atributo + ">" + atributo
+    opcoesTexto += 
+      "<input type='radio' name='atributo' value='" + 
+      atributo + 
+      "'>" + 
+      atributo;
   }
-  opcoes.innerHTML = opcoesTexto
+  opcoes.innerHTML = opcoesTexto;
 }
 
 function obtemAtributoSelecionado () {
   var radioAtributos = document.getElementsByName("atributo");
   
-  for (var i = 0; i <radioAtributos.length; i++)
+  for (var i = 0; i <radioAtributos.length; i++) {
     if (radioAtributos[i].checked == true) {
       return radioAtributos[i].value;
     }
+  }
 }
 
 function jogar () {
@@ -186,9 +191,9 @@ function jogar () {
   var valorCartaJogador = cartaJogador.atributos[atributoSelecionado]
   var valorCartaMaquina = cartaMaquina.atributos[atributoSelecionado]
 
-  if (cartaJogador > cartaJogador) {
+  if (valorCartaJogador > valorCartaMaquina) {
     elementoResultado.innerHTML = "Você venceu"
-  } else if (valorCartaJogador < cartaMaquina) {
+  } else if (valorCartaJogador < valorCartaMaquina) {
     elementoResultado.innerHTML = "Você perdeu"
   } else {
     elementoResultado.innerHTML = "Empatou"
